@@ -15,6 +15,7 @@ Hugging Face: `semantic-overlays-injection`. Place its contents at
 
 ```
 infra/    Modal apps: serving, training, goggled evaluation
+infra/goggles_plugin/  vLLM plugin: applies overlays at marked prefill positions
 evals/    frozen-model baseline harnesses (SEP, TensorTrust, PIArena)
 scripts/  corpus construction, judging, and scoring (run locally)
 web/      the interactive demo (Next.js; see web/README.md)
@@ -68,10 +69,11 @@ path, and volume namespace derives from it (`infra/config.py`).
    compliance judge. `infra/eval_tensortrust_aside165.py` replicates
    ASIDE's 165-row TensorTrust harness for the published comparison.
 8. **Serve with overlays** (interactive):
-   `modal deploy infra/goggled_vllm.py` — a vLLM plugin
-   (`infra/goggles_plugin/`) applies the trained adapters at marked
-   prefill positions; unmarked requests reproduce the frozen model
-   exactly.
+   `modal deploy infra/goggled_vllm.py` — vLLM itself is
+   unmodified (stock 0.21.0 from PyPI) --- `infra/goggles_plugin/` is a
+   pip package registered under vLLM's `general_plugins` entry point,
+   which applies the trained adapters at marked prefill positions;
+   unmarked requests reproduce the frozen model exactly.
 
 ## Notes for reproduction
 
