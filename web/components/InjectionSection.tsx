@@ -41,10 +41,11 @@ export default function InjectionSection() {
       <div className="card-head">
         <h2>An NX bit for LLMs: prompt-injection protection</h2>
         <p className="blurb">
-          A retrieval app. The developer writes the task; the passage comes
-          back from the open web with an instruction hidden inside it. The
-          passage is marked untrusted in full — it stays completely readable,
-          but loses the authority to give orders.
+          Imagine an application that fetches web data. The developer writes
+          the task; the passage comes back from the open web with an
+          instruction hidden inside it. Semantic overlays are used to mark the
+          full retrieved passage as &ldquo;do not execute&rdquo; — it stays
+          completely readable, but loses the authority to give orders.
         </p>
       </div>
 

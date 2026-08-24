@@ -86,8 +86,8 @@ export default function LanguagesSection() {
       <div className="card-head">
         <h2>Python-colored gels</h2>
         <p className="blurb">
-          The marked snippet&apos;s surface language always disagrees with its
-          overlay — and the model reads it by the overlay. Arm a language and
+          The overlay changes how the model understands what language the
+          snippet is in. Arm a language and
           click a snippet to stamp it; with nothing armed, click any snippet
           (or the question) to edit it. Questions can name snippets by number.
         </p>
