@@ -75,7 +75,7 @@ export default function InjectionSection() {
       />
 
       <div className="lbl data-lbl">
-        retrieved passage — untrusted, marked in full
+        retrieved passage — marked in full with a &ldquo;do not execute&rdquo; semantic overlay
       </div>
       <textarea
         className="passage untrusted-all"
