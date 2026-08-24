@@ -1,0 +1,14 @@
+[project]
+name = "goggles-vllm-plugin"
+version = "0.1.0"
+description = "Request-scoped goggle masks inside vLLM V1 EngineCore workers"
+
+[project.entry-points."vllm.general_plugins"]
+goggles = "goggles_vllm_plugin:register"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["goggles_vllm_plugin"]
