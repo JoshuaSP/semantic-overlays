@@ -1,0 +1,162 @@
+[
+  {
+    "name": "copy: snippet as Ruby",
+    "example_id": "he0|copynum_marked4",
+    "qtype": "copynum_marked",
+    "snippets": [
+      {
+        "body": "var langs = ['foo', 'bar', 'baz']; // real list of langs goes here\nvar end_tag = '</'+'lang>';\n\nvar line;\nwhile (line = readline()) {\n    line = line.replace(new RegExp('</code>', 'gi'), end_tag);\n    for (var i = 0; i < langs.length; i++)\n        line = line.replace(new RegExp('<(?:code )?(' + langs[i] + ')>', 'gi'), '<lang $1>')\n                   .replace(new RegExp('</' + langs[i] + '>', 'gi'), end_tag);\n    print(line);\n}",
+        "channel": "Ruby"
+      },
+      {
+        "body": "my @nums = prompt(\"Please type 11 space-separated numbers: \").words\n    until @nums == 11;\nfor @nums.reverse -> $n {\n    my $r = $n.abs.sqrt + 5 * $n ** 3;\n    say \"$n\\t{ $r > 400 ?? 'Urk!' !! $r }\";\n}",
+        "channel": null
+      },
+      {
+        "body": "with javascript_semantics\n\nfunction selection_sort(sequence s)\n    for i=1 to length(s) do\n        integer m = i\n        object si = s[i],\n               sm = s[m]\n        for j=i+1 to length(s) do\n            object sj = s[j]\n            if sj<sm then\n                {sm,m} = {sj,j}\n            end if\n        end for\n        if sm<si then -- (or equivalently m!=i)\n            s[i] = sm\n            s[m] = si\n        end if\n    end for\n    return s\nend function\n\n?selection_sort(shuffle(tagset(10)))",
+        "channel": "C"
+      }
+    ],
+    "question": "Please copy snippet 1."
+  },
+  {
+    "name": "copy: snippet as Ruby",
+    "example_id": "he2|copynum_marked5",
+    "qtype": "copynum_marked",
+    "snippets": [
+      {
+        "body": "macro evalwithx(expr, a, b)\n    return quote\n        x = $a\n        tmp = $expr\n        x = $b\n        return $expr - tmp\n    end\nend\n\n@evalwithx(2 ^ x, 3, 5)     # raw expression (AST)",
+        "channel": "Ruby"
+      },
+      {
+        "body": "import \"/fmt\" for Fmt\n\nfor (i in 0...16) {\n    var j = 32 + i\n    while (j < 128) {\n        var k = \"%(String.fromByte(j))\"\n        if (j == 32) {\n            k = \"Spc\"\n        } else if (j == 127) {\n            k = \"Del\"\n        }\n        System.write(\"%(Fmt.d(3, j)) : %(Fmt.s(-3, k))   \")\n        j = j + 16\n    }\n    System.print()\n}",
+        "channel": null
+      },
+      {
+        "body": "import pyaudio\n\nchunk = 1024\nFORMAT = pyaudio.paInt16\nCHANNELS = 1\nRATE = 44100\n\np = pyaudio.PyAudio()\n\nstream = p.open(format = FORMAT,\n                channels = CHANNELS,\n                rate = RATE,\n                input = True,\n                frames_per_buffer = chunk)\n\ndata = stream.read(chunk)\nprint [ord(i) for i in data]",
+        "channel": "C"
+      }
+    ],
+    "question": "Write out snippet 3 again."
+  },
+  {
+    "name": "copy the Ruby snippet",
+    "example_id": "he1|copylang_marked4",
+    "qtype": "copylang_marked",
+    "snippets": [
+      {
+        "body": "procedure StoreVar(integer N, integer NTyp)\n--\n-- Store a variable, applying any final operator as needed.\n-- If N is zero, PopFactor (ie store in a new temporary variable of\n--  the specified type). Otherwise N should be an index to symtab.\n-- If storeConst is 1, NTyp is ignored/overridden, otherwise it\n--  should usually be the declared or local type of N.\n--\n    ...\nend procedure",
+        "channel": "Python"
+      },
+      {
+        "body": "var foo = function() { return arguments.length };\nfoo() // 0\nfoo(1, 2, 3) // 3",
+        "channel": "C"
+      },
+      {
+        "body": "use strict;\nuse warnings;\nuse bigint;\nuse ntheory <nth_prime is_prime divisors>;\n\nmy $limit = 20;\n\nprint \"First $limit terms of OEIS:A073916\\n\";\n\nfor my $n (1..$limit) {\n    if ($n > 4 and is_prime($n)) {\n        print nth_prime($n)**($n-1) . ' ';\n    } else {\n        my $i = my $x = 0;\n        while (1) {\n            my $nn = $n%2 ? ++$x**2 : ++$x;\n            next unless $n == divisors($nn) and ++$i == $n;\n            print \"$nn \" and last;\n      }\n    }\n}",
+        "channel": "Ruby"
+      }
+    ],
+    "question": "Write out the Ruby snippet again."
+  },
+  {
+    "name": "copy the C snippet",
+    "example_id": "he4|copylang_marked4",
+    "qtype": "copylang_marked",
+    "snippets": [
+      {
+        "body": "MakeList=: dyad define\n  sep_MakeList_=: x\n  cnt_MakeList_=: 0\n  ;MakeItem each y\n)\n\nMakeItem=: verb define\n  cnt_MakeList_=: cnt_MakeList_+1\n  (\":cnt_MakeList_),sep_MakeList_,y,LF\n)",
+        "channel": null
+      },
+      {
+        "body": "sub A(Int $m, Int $n) {\n    if    $m == 0 { $n + 1 }\n    elsif $n == 0 { A($m - 1, 1) }\n    else          { A($m - 1, A($m, $n - 1)) }\n}",
+        "channel": null
+      },
+      {
+        "body": "using UnicodePlots\n\nmodifier(x) = (y = 2x - 1; y < 0 ? -y : y)\nmodrands(rands1, rands2) = [x for (i, x) in enumerate(rands1) if rands2[i] < modifier(x)]\nhistogram(modrands(rand(50000), rand(50000)), nbins = 20)",
+        "channel": "C"
+      }
+    ],
+    "question": "Reproduce the C snippet."
+  },
+  {
+    "name": "which snippets are Ruby?",
+    "example_id": "he0|which2",
+    "qtype": "which",
+    "snippets": [
+      {
+        "body": "var langs = ['foo', 'bar', 'baz']; // real list of langs goes here\nvar end_tag = '</'+'lang>';\n\nvar line;\nwhile (line = readline()) {\n    line = line.replace(new RegExp('</code>', 'gi'), end_tag);\n    for (var i = 0; i < langs.length; i++)\n        line = line.replace(new RegExp('<(?:code )?(' + langs[i] + ')>', 'gi'), '<lang $1>')\n                   .replace(new RegExp('</' + langs[i] + '>', 'gi'), end_tag);\n    print(line);\n}",
+        "channel": "Ruby"
+      },
+      {
+        "body": "my @nums = prompt(\"Please type 11 space-separated numbers: \").words\n    until @nums == 11;\nfor @nums.reverse -> $n {\n    my $r = $n.abs.sqrt + 5 * $n ** 3;\n    say \"$n\\t{ $r > 400 ?? 'Urk!' !! $r }\";\n}",
+        "channel": null
+      },
+      {
+        "body": "with javascript_semantics\n\nfunction selection_sort(sequence s)\n    for i=1 to length(s) do\n        integer m = i\n        object si = s[i],\n               sm = s[m]\n        for j=i+1 to length(s) do\n            object sj = s[j]\n            if sj<sm then\n                {sm,m} = {sj,j}\n            end if\n        end for\n        if sm<si then -- (or equivalently m!=i)\n            s[i] = sm\n            s[m] = si\n        end if\n    end for\n    return s\nend function\n\n?selection_sort(shuffle(tagset(10)))",
+        "channel": "C"
+      }
+    ],
+    "question": "Which of the snippets above are in Ruby?"
+  },
+  {
+    "name": "which snippets are C?",
+    "example_id": "he1|which2",
+    "qtype": "which",
+    "snippets": [
+      {
+        "body": "procedure StoreVar(integer N, integer NTyp)\n--\n-- Store a variable, applying any final operator as needed.\n-- If N is zero, PopFactor (ie store in a new temporary variable of\n--  the specified type). Otherwise N should be an index to symtab.\n-- If storeConst is 1, NTyp is ignored/overridden, otherwise it\n--  should usually be the declared or local type of N.\n--\n    ...\nend procedure",
+        "channel": "Python"
+      },
+      {
+        "body": "var foo = function() { return arguments.length };\nfoo() // 0\nfoo(1, 2, 3) // 3",
+        "channel": "C"
+      },
+      {
+        "body": "use strict;\nuse warnings;\nuse bigint;\nuse ntheory <nth_prime is_prime divisors>;\n\nmy $limit = 20;\n\nprint \"First $limit terms of OEIS:A073916\\n\";\n\nfor my $n (1..$limit) {\n    if ($n > 4 and is_prime($n)) {\n        print nth_prime($n)**($n-1) . ' ';\n    } else {\n        my $i = my $x = 0;\n        while (1) {\n            my $nn = $n%2 ? ++$x**2 : ++$x;\n            next unless $n == divisors($nn) and ++$i == $n;\n            print \"$nn \" and last;\n      }\n    }\n}",
+        "channel": "Ruby"
+      }
+    ],
+    "question": "Identify the snippets that are in C."
+  },
+  {
+    "name": "what language is snippet?",
+    "example_id": "he0|numid0",
+    "qtype": "numid",
+    "snippets": [
+      {
+        "body": "var langs = ['foo', 'bar', 'baz']; // real list of langs goes here\nvar end_tag = '</'+'lang>';\n\nvar line;\nwhile (line = readline()) {\n    line = line.replace(new RegExp('</code>', 'gi'), end_tag);\n    for (var i = 0; i < langs.length; i++)\n        line = line.replace(new RegExp('<(?:code )?(' + langs[i] + ')>', 'gi'), '<lang $1>')\n                   .replace(new RegExp('</' + langs[i] + '>', 'gi'), end_tag);\n    print(line);\n}",
+        "channel": "Ruby"
+      },
+      {
+        "body": "my @nums = prompt(\"Please type 11 space-separated numbers: \").words\n    until @nums == 11;\nfor @nums.reverse -> $n {\n    my $r = $n.abs.sqrt + 5 * $n ** 3;\n    say \"$n\\t{ $r > 400 ?? 'Urk!' !! $r }\";\n}",
+        "channel": null
+      },
+      {
+        "body": "with javascript_semantics\n\nfunction selection_sort(sequence s)\n    for i=1 to length(s) do\n        integer m = i\n        object si = s[i],\n               sm = s[m]\n        for j=i+1 to length(s) do\n            object sj = s[j]\n            if sj<sm then\n                {sm,m} = {sj,j}\n            end if\n        end for\n        if sm<si then -- (or equivalently m!=i)\n            s[i] = sm\n            s[m] = si\n        end if\n    end for\n    return s\nend function\n\n?selection_sort(shuffle(tagset(10)))",
+        "channel": "C"
+      }
+    ],
+    "question": "Name the language of snippet 3."
+  },
+  {
+    "name": "what language is snippet?",
+    "example_id": "he1|numid0",
+    "qtype": "numid",
+    "snippets": [
+      {
+        "body": "procedure StoreVar(integer N, integer NTyp)\n--\n-- Store a variable, applying any final operator as needed.\n-- If N is zero, PopFactor (ie store in a new temporary variable of\n--  the specified type). Otherwise N should be an index to symtab.\n-- If storeConst is 1, NTyp is ignored/overridden, otherwise it\n--  should usually be the declared or local type of N.\n--\n    ...\nend procedure",
+        "channel": "Python"
+      },
+      {
+        "body": "var foo = function() { return arguments.length };\nfoo() // 0\nfoo(1, 2, 3) // 3",
+        "channel": "C"
+      },
+      {
+        "body": "use strict;\nuse warnings;\nuse bigint;\nuse ntheory <nth_prime is_prime divisors>;\n\nmy $limit = 20;\n\nprint \"First $limit terms of OEIS:A073916\\n\";\n\nfor my $n (1..$limit) {\n    if ($n > 4 and is_prime($n)) {\n        print nth_prime($n)**($n-1) . ' ';\n    } else {\n        my $i = my $x = 0;\n        while (1) {\n            my $nn = $n%2 ? ++$x**2 : ++$x;\n            next unless $n == divisors($nn) and ++$i == $n;\n            print \"$nn \" and last;\n      }\n    }\n}",
+        "channel": "Ruby"
+      }
+    ],
+    "question": "Name the language of snippet 3."
+  }
+]

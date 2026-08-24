@@ -17,7 +17,15 @@ Hugging Face: `semantic-overlays-injection`. Place its contents at
 infra/    Modal apps: serving, training, goggled evaluation
 evals/    frozen-model baseline harnesses (SEP, TensorTrust, PIArena)
 scripts/  corpus construction, judging, and scoring (run locally)
+web/      the interactive demo (Next.js; see web/README.md)
 ```
+
+Trained adapter checkpoints for every overlay set the demo serves —
+the do-not-execute overlay on both base models, the twelve visual
+marks, the four asserted languages, and the twelve carried
+instructions — are released as `semantic-overlays-adapters` on
+Hugging Face. With those, the demo and every evaluation run without
+any training.
 
 Everything GPU-bound runs on [Modal](https://modal.com) (H100s); the
 scripts/ directory runs locally against a deployed endpoint. Set
