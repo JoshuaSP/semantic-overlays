@@ -41,7 +41,11 @@ export default function InjectionSection() {
       <div className="card-head">
         <h2>An NX bit for LLMs: prompt-injection protection</h2>
         <p className="blurb">
-          Imagine an application that fetches web data. The developer writes
+          The NX (no-execute) bit is a hardware feature that lets an
+          operating system mark a region of memory as data: the CPU will read
+          it, but refuses to run it as code. This section is the same idea
+          for language models. Imagine an application that fetches web data.
+          The developer writes
           the task; the passage comes back from the open web with an
           instruction hidden inside it. Semantic overlays are used to mark the
           full retrieved passage as &ldquo;do not execute&rdquo; — it stays
@@ -76,7 +80,7 @@ export default function InjectionSection() {
       <textarea
         className="instruction-box"
         value={instruction}
-        rows={3}
+        rows={2}
         onChange={(e) => setInstruction(e.target.value)}
       />
 

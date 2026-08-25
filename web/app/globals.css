@@ -826,7 +826,7 @@ footer {
 
 /* Auto-size the retrieved-passage box to its content (rows= is the
    fallback for engines without field-sizing). */
-textarea.passage, textarea.markbox { field-sizing: content; max-height: 420px; }
+textarea.passage, textarea.markbox, textarea.instruction-box { field-sizing: content; max-height: 420px; }
 /* no manual resize grips anywhere -- boxes size to content */
 textarea { resize: none; }
 
