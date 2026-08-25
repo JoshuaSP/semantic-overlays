@@ -49,6 +49,12 @@ export default function InjectionSection() {
         </p>
       </div>
 
+      <img
+        className="mech-diagram"
+        src="/overlay-diagram.svg"
+        alt="Mechanism diagram: prompt tokens rise through frozen attention and per-position MLPs; trained overlay adapters add deltas to the residual stream only at the positions of the retrieved span, marked do-not-execute by the serving stack. The injected instruction inside the span is ignored in the generated answer."
+      />
+
       <div className="deck">
         <button className="ghost" onClick={() => load(idx - 1)}>‹</button>
         <span className="deck-name">
