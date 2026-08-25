@@ -483,6 +483,9 @@ RAG_USER = "Input:\n{}\n"
          # never killed partway and paid for twice
          startup_timeout=15 * 60,
          scaledown_window=15 * 60,
+         # public demo: hard-cap spend at one H100; @modal.concurrent
+         # absorbs concurrency inside the single container
+         max_containers=1,
          volumes={"/root/.cache/huggingface": hf_cache, "/data": data_vol,
                        "/jit": jit_cache})
 @modal.concurrent(max_inputs=32)
