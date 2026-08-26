@@ -1,14 +1,25 @@
 # Semantic Overlays — injection-defense reproduction
 
-Minimal code to reproduce the prompt-injection results of *Semantic
+Minimal code to reproduce the prompt-injection results of **Semantic
 Overlays: Mitigating Prompt Injection with Annotations Beyond Tokens and
-Steering Vectors*: corpus construction, adapter training on two frozen
-base models (Qwen3.5-9B and Llama-3.1-8B-Instruct), serving, and the
+Steering Vectors** ([arXiv:2608.23873](https://arxiv.org/abs/2608.23873)):
+corpus construction, adapter training on two frozen base models
+(Qwen3.5-9B and Llama-3.1-8B-Instruct), serving, and the
 SEP / TensorTrust / PIArena evaluations.
+
+**Related releases**
+
+| | |
+|---|---|
+| paper | [arXiv:2608.23873](https://arxiv.org/abs/2608.23873) |
+| interactive demo | [semantic-overlays.vercel.app](https://semantic-overlays.vercel.app) |
+| training corpus | [semantic-overlays-injection](https://huggingface.co/datasets/joshuapenman/semantic-overlays-injection) |
+| trained adapters | [semantic-overlays-adapters](https://huggingface.co/joshuapenman/semantic-overlays-adapters) |
+| Quadrat-IPI harness | [quadrat-model-eval](https://github.com/JoshuaSP/quadrat-model-eval) |
 
 The companion dataset (composed training corpus, frame bank, payload
 screening records, and frame rankings for both base models) is on
-Hugging Face: `semantic-overlays-injection`. Place its contents at
+Hugging Face as `semantic-overlays-injection`. Place its contents at
 `data/injectgen/` relative to this repo's root.
 
 ## Layout
