@@ -48,7 +48,7 @@ Usage:
   uv run scripts/compose_short_span_items.py --url ... --n-title 350 \
       --n-question 150 --n-pure 100 --n-fidelity 100
 """
-import argparse, json, random, re, sys, threading, time
+import argparse, json, os, random, re, sys, threading, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -60,7 +60,7 @@ from common import TEMPLATE_SYSTEM, TEMPLATE_USER  # noqa: E402
 
 COMPOSED = REPO / "data" / "injectgen" / "composed"
 OUT_DIR = REPO / "data" / "injectgen" / "short_span"
-KEY = "goggles-baseline-7c1f4e2a"
+KEY = os.environ["GOGGLES_API_KEY"]  # bearer token for your serving endpoint
 
 QUESTION_TASKS = [
     "Answer the following question.",
