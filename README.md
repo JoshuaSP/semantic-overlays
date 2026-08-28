@@ -44,12 +44,22 @@ volume namespace derives from it (`infra/config.py`).
 Four steps. You do not need to build a corpus: the released one is on Hugging
 Face, already screened and ranked against both base models.
 
-1. **Get the corpus.**
+1. **Get the corpus.** The dataset is laid out by base model; the tokenizer
+   reads one model's files from `composed/`, so pick a model as you unpack.
 
    ```bash
    huggingface-cli download joshuapenman/semantic-overlays-injection \
-     --repo-type dataset --local-dir data/injectgen
+     --repo-type dataset --local-dir data/hf-corpus
+
+   mkdir -p data/injectgen/composed data/injectgen/short_span
+   cp data/hf-corpus/qwen3.5-9b/*.json*   data/injectgen/composed/
+   cp -r data/hf-corpus/shared/*          data/injectgen/composed/
+   cp data/hf-corpus/qwen3.5-9b/short_span/* data/injectgen/short_span/
    ```
+
+   For Llama, substitute `llama-3.1-8b-instruct/` and drop the `short_span`
+   line and the `--short-span` flag below: that overlay was trained before the
+   short-span family existed.
 
 2. **Tokenize it.** This writes the `.npz` the trainer reads, stamped with the
    model id so a dataset tokenized for one base model cannot silently be used
@@ -121,15 +131,6 @@ not extra signal.
 
 ## Notes for reproduction
 
-- Corpus derivation is per base model by design: payload screening and
-  frame ranking must be re-run against any new base model. Between the
-  paper's two models a quarter of the kept payload sets are disjoint and
-  the frame rankings correlate at only 0.49.
-- The injected frame is re-drawn per item per epoch by the trainer, using
-  the weights stored in the dataset meta (measured injection rate plus a
-  floor of 0.15). The frame recorded at composition time is not what the
-  model trains against; `STYLE_TARGETS` in the composer governs only the
-  stored units.
 - The Llama checkpoint was trained on an earlier data mix than the Qwen
   one, so its numbers are a lower bound on the recipe rather than a
   matched comparison.
