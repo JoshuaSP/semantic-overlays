@@ -25,55 +25,88 @@ Hugging Face as `semantic-overlays-injection`. Place its contents at
 ## Layout
 
 ```
-infra/    Modal apps: serving, training, goggled evaluation
-infra/goggles_plugin/  vLLM plugin: applies overlays at marked prefill positions
-evals/    frozen-model baseline harnesses (SEP, TensorTrust, PIArena)
-scripts/  corpus construction, judging, and scoring (run locally)
-web/      the interactive demo (Next.js; see web/README.md)
+infra/            Modal apps: serving, training, goggled evaluation
+infra/goggles_plugin/   vLLM plugin: applies overlays at marked prefill positions
+evals/            frozen-model baseline harnesses (SEP, TensorTrust, PIArena)
+scripts/          tokenizing, judging, scoring (run locally)
+scripts/corpus/   how the released corpus was built -- not needed to reproduce
+web/              the interactive demo (Next.js; see web/README.md)
 ```
 
-Trained adapter checkpoints for every overlay set the demo serves —
-the do-not-execute overlay on both base models, the twelve visual
-marks, the four asserted languages, and the twelve carried
-instructions — are released as `semantic-overlays-adapters` on
-Hugging Face. With those, the demo and every evaluation run without
-any training.
+Everything GPU-bound runs on [Modal](https://modal.com) (H100s); `scripts/`
+runs locally. Set `GOGGLES_VLLM_API_KEY` to a bearer token of your choice
+before deploying. To target Llama instead of the default Qwen3.5-9B, export
+`GOGGLES_MODEL=meta-llama/Llama-3.1-8B-Instruct` -- every app, output path, and
+volume namespace derives from it (`infra/config.py`).
 
-Everything GPU-bound runs on [Modal](https://modal.com) (H100s); the
-scripts/ directory runs locally against a deployed endpoint. Set
-`GOGGLES_VLLM_API_KEY` to a bearer token of your choice before
-deploying. To target Llama instead of the default Qwen3.5-9B, export
-`GOGGLES_MODEL=meta-llama/Llama-3.1-8B-Instruct` — every app, output
-path, and volume namespace derives from it (`infra/config.py`).
+## Reproducing the paper
 
-## Pipeline
+Four steps. You do not need to build a corpus: the released one is on Hugging
+Face, already screened and ranked against both base models.
 
-1. **Serve the frozen model** (baselines + corpus derivation need it):
-   `modal deploy infra/modal_vllm.py`
-2. **Screen payloads** against the frozen model (keeps only payloads it
-   answers standalone; witness metrics are unsound otherwise):
-   `uv run scripts/screen_payloads.py --base-url <endpoint>/v1`
-3. **Rank frames** (per-model standalone injection rate per frame;
-   sampling shares derive from this):
-   `uv run scripts/rank_frames.py --base-url <endpoint>/v1`
-4. **Compose and tokenize the corpus**:
-   `uv run scripts/compose_injection_items.py`, then
-   `uv run scripts/preprocess_injection_ce.py` (Qwen) or
-   `uv run scripts/preprocess_injection_v2.py` (Llama). The assistant
-   turn's terminator is read from the chat template — it is
-   model-specific, and hardcoding it silently breaks both training and
-   generation stopping on the other model.
-5. **Train** (≈4 h on 8×H100 for the reported checkpoints):
-   `modal run infra/train_injv2b_6x_per4.py::train` (Qwen) or
-   `GOGGLES_MODEL=... modal run infra/train_llama_inj.py::train`
-6. **Evaluate the marked arm** (`--arm off` reproduces the frozen rows
-   with the same harness):
-   `modal run infra/eval_sep_goggled.py --ckpt <name> --arm on --n-items 1000`
-   `modal run infra/eval_tensortrust_goggled.py --ckpt <name> --arm on --benchmark hijacking`
-   (and `extraction`), `modal run infra/eval_piarena_goggled.py --ckpt <name> --arm on`,
-   `modal run infra/eval_fidelity.py --ckpt <name>` for the copy-rate.
-7. **Baselines and scoring**: `evals/{sep,tensortrust,piarena}.py` run
-   the frozen/prompt-defense arms; `scripts/judge_piarena.py` scores the
+1. **Get the corpus.**
+
+   ```bash
+   huggingface-cli download joshuapenman/semantic-overlays-injection \
+     --repo-type dataset --local-dir data/injectgen
+   ```
+
+2. **Tokenize it.** This writes the `.npz` the trainer reads, stamped with the
+   model id so a dataset tokenized for one base model cannot silently be used
+   with another.
+
+   ```bash
+   python scripts/preprocess_injection_v2.py --name injv2b-ss --short-span
+   modal volume put goggles-data data/training/injv2b-ss_train.npz /training/
+   modal volume put goggles-data data/training/injv2b-ss_heldout.npz /training/
+   modal volume put goggles-data data/training/injv2b-ss_train_meta.json /training/
+   modal volume put goggles-data data/training/injv2b-ss_heldout_meta.json /training/
+   ```
+
+3. **Train** (about 5 h on 8xH100 for the reported checkpoint):
+
+   ```bash
+   modal run --detach infra/train_injv2b_ss.py --run-name injv2b-ss-6x-per4
+   ```
+
+   Or skip training entirely: every checkpoint the paper reports is released as
+   `semantic-overlays-adapters` on Hugging Face.
+
+4. **Evaluate.** `--arm off` reproduces the frozen rows with the same harness,
+   so both arms of every table come from one command each.
+
+   ```bash
+   modal run infra/eval_sep_goggled.py       --ckpt injv2b-ss-6x-per4 --arm on --full
+   modal run infra/eval_tensortrust_goggled.py --ckpt injv2b-ss-6x-per4 --arm on --benchmark hijacking
+   modal run infra/eval_tensortrust_goggled.py --ckpt injv2b-ss-6x-per4 --arm on --benchmark extraction
+   modal run infra/eval_piarena_goggled.py   --ckpt injv2b-ss-6x-per4 --arm on
+   modal run infra/eval_fidelity.py          --ckpt injv2b-ss-6x-per4 --arm on --n-items 500
+   ```
+
+## Building a corpus from scratch (optional)
+
+Only needed to derive a corpus for a **new base model**. Two of these steps
+measure against the model itself, so they cannot be inherited: payload
+screening keeps only payloads the frozen model answers standalone (witness
+metrics are unsound otherwise), and frame ranking measures each frame's
+standalone injection rate, which sets sampling shares. For the two models in
+the paper, both records ship with the released corpus.
+
+```bash
+modal deploy infra/modal_vllm.py                    # serve the frozen model
+uv run scripts/corpus/screen_payloads.py --base-url <endpoint>/v1
+uv run scripts/corpus/rank_frames.py     --base-url <endpoint>/v1
+uv run scripts/corpus/compose_injection_items.py --base-url <endpoint>/v1
+uv run scripts/corpus/gen_gate_items.py      --n-units 4800 --unique
+uv run scripts/corpus/gen_validator_items.py --n-units 6000
+uv run scripts/corpus/gen_fidelity_items.py  --n 1920
+uv run scripts/corpus/compose_short_span_items.py --url <endpoint>/generate
+```
+
+`--unique` on the gate family is not optional: without it, 4,800 requested
+items yield about 4,166 distinct (span, target) pairs, and the duplicates are
+not extra signal.
+
    two judged PIArena families (two-step, evidence-grounded);
    `scripts/score_sep_boundary.py` applies the corrected SEP grading
    rule described in the paper; `scripts/judge_sep.py` is the SEP
@@ -89,9 +122,17 @@ path, and volume namespace derives from it (`infra/config.py`).
 ## Notes for reproduction
 
 - Corpus derivation is per base model by design: payload screening and
-  frame ranking (steps 2–3) must be re-run against any new base model.
-  Between the paper's two models a quarter of the kept payload sets are
-  disjoint and the frame rankings correlate at only 0.49.
+  frame ranking must be re-run against any new base model. Between the
+  paper's two models a quarter of the kept payload sets are disjoint and
+  the frame rankings correlate at only 0.49.
+- The injected frame is re-drawn per item per epoch by the trainer, using
+  the weights stored in the dataset meta (measured injection rate plus a
+  floor of 0.15). The frame recorded at composition time is not what the
+  model trains against; `STYLE_TARGETS` in the composer governs only the
+  stored units.
+- The Llama checkpoint was trained on an earlier data mix than the Qwen
+  one, so its numbers are a lower bound on the recipe rather than a
+  matched comparison.
 - Eval outputs checkpoint per item and resume; killing and relaunching
   any eval is safe.
 - All decoding is greedy at temperature 0 unless a script says

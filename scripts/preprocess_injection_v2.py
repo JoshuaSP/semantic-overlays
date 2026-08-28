@@ -126,7 +126,13 @@ def main():
     import argparse
     _ap = argparse.ArgumentParser()
     _ap.add_argument("--name", default="injv2")
-    _name = _ap.parse_args().name
+    _ap.add_argument("--short-span", action="store_true",
+                     help="fold in data/injectgen/short_span/ as FIXED items "
+                          "(see notes/short_span_corpus_plan.md). Must be "
+                          "explicit: silently changing an existing --name "
+                          "dataset would break its reproducibility.")
+    _args = _ap.parse_args()
+    _name = _args.name
     main_items = [json.loads(l) for l in open(COMPOSED / "items.jsonl") if l.strip()]
     gate = [json.loads(l) for l in open(COMPOSED / "gate_items.jsonl") if l.strip()]
     val = [json.loads(l) for l in open(COMPOSED / "validator_items.jsonl") if l.strip()]
@@ -138,6 +144,32 @@ def main():
     fid_path = COMPOSED / "fidelity_items.jsonl"
     fid = ([json.loads(l) for l in open(fid_path) if l.strip()]
            if fid_path.exists() else [])
+
+    # Short-span increment: fills the corpus corner the shipped adapter never
+    # saw (spans under ~216 chars, payload-dominant, bare-framed) which is where
+    # the AlpacaFarm/StruQ leak lives. Carried as FIXED items, not resamplable:
+    # the resamplable track rebuilds a unit from its BENIGN twin and re-draws
+    # the payload, which would (a) discard the deliberate short-span payload /
+    # frame / position policy and (b) silently DROP every `pure` unit, since a
+    # 100%-injection span has no benign twin to rebuild from.
+    ss = []
+    if _args.short_span:
+        ss_dir = REPO / "data" / "injectgen" / "short_span"
+        ss_items = ss_dir / "items.jsonl"
+        ss_fid = ss_dir / "fidelity_items.jsonl"
+        if not ss_items.exists():
+            raise SystemExit(f"--short-span given but {ss_items} is missing; "
+                             "run scripts/compose_short_span_items.py first")
+        for it in (json.loads(l) for l in open(ss_items) if l.strip()):
+            # Distinct kind + sub-kind so each lands in its OWN stratified
+            # heldout cell instead of pooling with the long-span families.
+            it["task_name"] = it["operand_kind"]        # title / question / pure
+            it["kind"] = "ss_" + it["kind"]             # ss_injected / ss_benign
+            ss.append(it)
+        for it in (json.loads(l) for l in open(ss_fid) if l.strip()):
+            it["task_name"] = "copy_injected_short"
+            ss.append(it)
+        print(f"short-span increment: {len(ss)} fixed items")
 
     # One RESAMPLABLE unit per (passage, task): keep the benign twin's rendering
     # (the clean prefix, which is also the teacher) and the shared clean target.
@@ -171,10 +203,28 @@ def main():
     import collections
     r = random.Random(0)
     cells = collections.defaultdict(list)
-    for it in gate + val + fid:
+    for it in gate + val + fid + ss:
         cells[(it["kind"], it.get("gate_kind") or it.get("task_name"))].append(it)
-    for key, group in sorted(cells.items()):
+    # The pre-existing families must keep the EXACT split they had before the
+    # short-span cells existed. A single RNG walked over sorted(cells) does not:
+    # "fidelity/copy_injected_short" sorts before every gate cell, so inserting
+    # it shifts the stream and silently reassigns ~900 gate/validator items
+    # between train and heldout -- which would make this dataset differ from the
+    # shipped one in more than the increment. Walk the original cells first with
+    # the original RNG, then the new ones with their own.
+    def _is_new(key):
+        return key[0].startswith("ss_") or key[1] == "copy_injected_short"
+
+    for key in sorted(k for k in cells if not _is_new(k)):
+        group = cells[key]
         r.shuffle(group)
+        n_h = max(20, int(len(group) * HELDOUT_FRAC))
+        splits["heldout"]["fixed"].extend(group[:n_h])
+        splits["train"]["fixed"].extend(group[n_h:])
+    r_new = random.Random(1)
+    for key in sorted(k for k in cells if _is_new(k)):
+        group = cells[key]
+        r_new.shuffle(group)
         n_h = max(20, int(len(group) * HELDOUT_FRAC))
         splits["heldout"]["fixed"].extend(group[:n_h])
         splits["train"]["fixed"].extend(group[n_h:])

@@ -3,7 +3,7 @@
   modal run infra/eval_fidelity.py --ckpt inject-mlp128-kl-8k --arm on
   modal run infra/eval_fidelity.py --ckpt inject-mlp128-kl-8k --arm off
 
-WHY (2026-08-11): our contract is "this span is data, not instruction —
+WHY (Joshua, 2026-08-11): our contract is "this span is data, not instruction —
 no imperative authority, but FULLY READABLE". SEP measures only the first half.
 The span is demonstrably usable — the goggled model summarises it, assesses its
 cohesion, translates it — and 74% of SEP's tasks are analytic ones that require
@@ -167,7 +167,12 @@ def _worker(rank, world, ckpt_name, arm, n_items, out_path):
             fh.write(json.dumps({
                 "key": f"fid:{i}:{arm}", "idx": i, "arm": arm,
                 "exact": completion == passage.strip(),
-                "similarity": difflib.SequenceMatcher(None, passage.strip(), completion).ratio(),
+                # autojunk=False: difflib treats any element appearing in >1% of a
+                # sequence longer than 200 as junk, which on a 600-char passage
+                # is every common letter and the space. With it on, a passage
+                # reproduced with one character dropped scored 0.374.
+                "similarity": difflib.SequenceMatcher(
+                    None, passage.strip(), completion, autojunk=False).ratio(),
                 "prefix_tokens_exact": pref, "src_tokens": len(src_ids),
                 "gen_tokens": len(gen_ids), "mask_tokens": hits,
                 "completion": completion[:4000],
@@ -186,7 +191,9 @@ def evaluate(ckpt_name: str, arm: str, n_items: int, run: str):
     import torch.multiprocessing as mp
     out_dir = f"/data/eval/{run}"
     os.makedirs(out_dir, exist_ok=True)
-    out_path = f"{out_dir}/fidelity_{arm}.jsonl"
+    # ckpt in the path: this file is resumable, so keying it on `arm` alone
+    # made a second checkpoint resume from the first and emit a copy.
+    out_path = f"{out_dir}/fidelity_{ckpt_name}_{arm}.jsonl"
 
     def merge():
         with open(out_path, "a") as dst:

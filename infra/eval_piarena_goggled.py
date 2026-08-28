@@ -24,6 +24,8 @@ scripts/judge_piarena.py score this arm unchanged. Mechanical categories need no
 model; the two judged ones use the two-step withheld-instruction judge.
 """
 
+import os as _os
+
 import modal
 
 import config
@@ -43,7 +45,9 @@ image = (
     .env({"HF_XET_HIGH_PERFORMANCE": "1",
           # resolved at deploy; config.py re-imports in-container
           "GOGGLES_MODEL": config.MODEL_ID,
-          "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
+          "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+          # baked at deploy so the container sees the caller's choice
+          "PIARENA_ROWS": _os.environ.get("PIARENA_ROWS", "rows.json")})
     .add_local_python_source("config", "goggles_lib", "hf_ready")
 )
 
@@ -92,7 +96,10 @@ def _worker(rank, world, ckpt_name, arm, n_items, out_path):
         print(f"loaded {ckpt_name} step {ck['opt_step']}; arm={arm} "
               f"(hooks {'ENABLED' if goggles.enabled else 'DISABLED'})", flush=True)
 
-    rows = json.loads(open("/data/eval/piarena/rows.json").read())[:n_items]
+    # Rows file is selectable so a second dataset split can be evaluated
+    # without overwriting the one earlier results were produced from.
+    _rows_file = os.environ.get("PIARENA_ROWS", "rows.json")
+    rows = json.loads(open(f"/data/eval/piarena/{_rows_file}").read())[:n_items]
     done = set()
     if os.path.exists(out_path):
         with open(out_path) as f:
@@ -200,7 +207,11 @@ def evaluate(ckpt_name: str, arm: str, n_items: int, run: str):
     import torch.multiprocessing as mp
     out_dir = f"/data/eval/{run}"
     os.makedirs(out_dir, exist_ok=True)
-    out_path = f"{out_dir}/piarena_{arm}.jsonl"
+    # rows file in the path: this file is resumable, so evaluating a second
+    # dataset split under the same name resumed from the first and wrote
+    # nothing, silently reporting the old split's numbers.
+    _tag = _os.environ.get("PIARENA_ROWS", "rows.json").replace(".json", "")
+    out_path = f"{out_dir}/piarena_{_tag}_{arm}.jsonl"
 
     def merge():
         with open(out_path, "a") as dst:
