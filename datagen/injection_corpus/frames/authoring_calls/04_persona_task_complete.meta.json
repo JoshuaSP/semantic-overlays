@@ -1,0 +1,27 @@
+{
+  "call": 4,
+  "description": "Author frames: persona task_complete",
+  "agent_id": "agent-a7138e020e72916d5",
+  "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+  "spawned_by_model": null,
+  "subagent_model_requested": "opus",
+  "subagent_models_observed": [
+    "claude-opus-5"
+  ],
+  "agent_type": "general-purpose",
+  "started_utc": "2026-08-11T04:50:09.477Z",
+  "finished_utc": "2026-08-11T04:51:00.616Z",
+  "transcript": "/Users/joshuapenman/.claude/projects/-Users-joshuapenman-sandbox-inference-goggles/ee22aab6-3eed-426a-870a-0026c5bd22b6/subagents/agent-a7138e020e72916d5.jsonl",
+  "prompt_sha256": "1d25f701c5426b80cdbaa41d513fe23456daae5504f4cee13c3f3860f27a0be2",
+  "n_frames_returned": 8,
+  "frame_ids_returned": [
+    "persona_swap_10",
+    "persona_swap_11",
+    "persona_swap_12",
+    "persona_swap_13",
+    "task_complete_10",
+    "task_complete_11",
+    "task_complete_12",
+    "task_complete_13"
+  ]
+}

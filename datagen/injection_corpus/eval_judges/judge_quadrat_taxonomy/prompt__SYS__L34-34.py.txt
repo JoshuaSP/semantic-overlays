@@ -1,0 +1,1 @@
+SYS = "You extract and verify precisely. You output ONLY strict JSON."

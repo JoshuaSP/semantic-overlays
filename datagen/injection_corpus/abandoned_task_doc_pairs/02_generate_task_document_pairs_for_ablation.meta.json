@@ -1,0 +1,11 @@
+{
+  "description": "Generate task-document pairs for ablation",
+  "agent_id": "agent-aef5124e6bb0c4722",
+  "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+  "subagent_models_observed": [
+    "claude-opus-5"
+  ],
+  "started_utc": "2026-08-04T05:29:25.815Z",
+  "finished_utc": "2026-08-04T05:36:20.994Z",
+  "transcript": "/Users/joshuapenman/.claude/projects/-Users-joshuapenman-sandbox-inference-goggles/ee22aab6-3eed-426a-870a-0026c5bd22b6/subagents/agent-aef5124e6bb0c4722.jsonl"
+}

@@ -1,0 +1,583 @@
+{
+  "frames_file": "release_data/shared/frames.json",
+  "frames_file_sha256": "627637530288fa5cdf15f95a201affa06b7fdb98d1b59db688718774ea302da7",
+  "identical_to": "data/injectgen/composed/frames.json",
+  "n_entries": 57,
+  "n_composable": 56,
+  "frames": [
+    {
+      "id": "sep_verbatim",
+      "style": "insistent",
+      "reference_only": true,
+      "source": "SEP benchmark's own insistent prefix (Zverev et al.), copied as the reference bar",
+      "composed_into_training": false,
+      "written_at": "main-session line 799 (same Write as the seed frames)"
+    },
+    {
+      "id": "insistent_v1",
+      "style": "insistent",
+      "reference_only": false,
+      "source": "main-session model, written directly (no dedicated prompt)",
+      "model": "claude-fable-5",
+      "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+      "line_index": 799,
+      "timestamp": "2026-08-11T01:31:12.839Z",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "insistent_v2",
+      "style": "insistent",
+      "reference_only": false,
+      "source": "main-session model, written directly (no dedicated prompt)",
+      "model": "claude-fable-5",
+      "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+      "line_index": 799,
+      "timestamp": "2026-08-11T01:31:12.839Z",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "authority_v1",
+      "style": "authority",
+      "reference_only": false,
+      "source": "main-session model, written directly (no dedicated prompt)",
+      "model": "claude-fable-5",
+      "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+      "line_index": 799,
+      "timestamp": "2026-08-11T01:31:12.839Z",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "authority_v2",
+      "style": "authority",
+      "reference_only": false,
+      "source": "main-session model, written directly (no dedicated prompt)",
+      "model": "claude-fable-5",
+      "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+      "line_index": 799,
+      "timestamp": "2026-08-11T01:31:12.839Z",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "bare",
+      "style": "bare",
+      "reference_only": false,
+      "source": "main-session model, written directly (no dedicated prompt)",
+      "model": "claude-fable-5",
+      "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+      "line_index": 799,
+      "timestamp": "2026-08-11T01:31:12.839Z",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "conversational_v1",
+      "style": "conversational",
+      "reference_only": false,
+      "source": "main-session model, written directly (no dedicated prompt)",
+      "model": "claude-fable-5",
+      "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+      "line_index": 799,
+      "timestamp": "2026-08-11T01:31:12.839Z",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "reasoning_bait_10",
+      "style": "reasoning_bait",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 6,
+      "agent_id": "agent-a8e2ec6f3906838a3",
+      "description": "Author frames: reasoning_bait nested_quote",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "reasoning_bait_11",
+      "style": "reasoning_bait",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 6,
+      "agent_id": "agent-a8e2ec6f3906838a3",
+      "description": "Author frames: reasoning_bait nested_quote",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "reasoning_bait_12",
+      "style": "reasoning_bait",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 6,
+      "agent_id": "agent-a8e2ec6f3906838a3",
+      "description": "Author frames: reasoning_bait nested_quote",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "reasoning_bait_13",
+      "style": "reasoning_bait",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 6,
+      "agent_id": "agent-a8e2ec6f3906838a3",
+      "description": "Author frames: reasoning_bait nested_quote",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "nested_quote_10",
+      "style": "nested_quote",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 6,
+      "agent_id": "agent-a8e2ec6f3906838a3",
+      "description": "Author frames: reasoning_bait nested_quote",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "nested_quote_11",
+      "style": "nested_quote",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 6,
+      "agent_id": "agent-a8e2ec6f3906838a3",
+      "description": "Author frames: reasoning_bait nested_quote",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "nested_quote_12",
+      "style": "nested_quote",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 6,
+      "agent_id": "agent-a8e2ec6f3906838a3",
+      "description": "Author frames: reasoning_bait nested_quote",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "nested_quote_13",
+      "style": "nested_quote",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 6,
+      "agent_id": "agent-a8e2ec6f3906838a3",
+      "description": "Author frames: reasoning_bait nested_quote",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "fake_delimiter_10",
+      "style": "fake_delimiter",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 3,
+      "agent_id": "agent-a3e62773d7771bef0",
+      "description": "Author frames: delimiter metadata",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "fake_delimiter_11",
+      "style": "fake_delimiter",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 3,
+      "agent_id": "agent-a3e62773d7771bef0",
+      "description": "Author frames: delimiter metadata",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "fake_delimiter_12",
+      "style": "fake_delimiter",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 3,
+      "agent_id": "agent-a3e62773d7771bef0",
+      "description": "Author frames: delimiter metadata",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "fake_delimiter_13",
+      "style": "fake_delimiter",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 3,
+      "agent_id": "agent-a3e62773d7771bef0",
+      "description": "Author frames: delimiter metadata",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "metadata_spoof_10",
+      "style": "metadata_spoof",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 3,
+      "agent_id": "agent-a3e62773d7771bef0",
+      "description": "Author frames: delimiter metadata",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "metadata_spoof_11",
+      "style": "metadata_spoof",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 3,
+      "agent_id": "agent-a3e62773d7771bef0",
+      "description": "Author frames: delimiter metadata",
+      "final_vs_authored": "literal braces doubled for str.format (orchestrator normalisation, main-session line 1105)"
+    },
+    {
+      "id": "metadata_spoof_12",
+      "style": "metadata_spoof",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 3,
+      "agent_id": "agent-a3e62773d7771bef0",
+      "description": "Author frames: delimiter metadata",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "metadata_spoof_13",
+      "style": "metadata_spoof",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 3,
+      "agent_id": "agent-a3e62773d7771bef0",
+      "description": "Author frames: delimiter metadata",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "insistent_11",
+      "style": "insistent",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 2,
+      "agent_id": "agent-a19997b20bcada262",
+      "description": "Author frames: insistent authority",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "insistent_12",
+      "style": "insistent",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 2,
+      "agent_id": "agent-a19997b20bcada262",
+      "description": "Author frames: insistent authority",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "insistent_13",
+      "style": "insistent",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 2,
+      "agent_id": "agent-a19997b20bcada262",
+      "description": "Author frames: insistent authority",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "authority_10",
+      "style": "authority",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 2,
+      "agent_id": "agent-a19997b20bcada262",
+      "description": "Author frames: insistent authority",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "authority_12",
+      "style": "authority",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 2,
+      "agent_id": "agent-a19997b20bcada262",
+      "description": "Author frames: insistent authority",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "persona_swap_11",
+      "style": "persona_swap",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 4,
+      "agent_id": "agent-a7138e020e72916d5",
+      "description": "Author frames: persona task_complete",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "task_complete_10",
+      "style": "task_complete",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 4,
+      "agent_id": "agent-a7138e020e72916d5",
+      "description": "Author frames: persona task_complete",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "task_complete_12",
+      "style": "task_complete",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 4,
+      "agent_id": "agent-a7138e020e72916d5",
+      "description": "Author frames: persona task_complete",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "politeness_10",
+      "style": "politeness",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 5,
+      "agent_id": "agent-a1f455b33f4deba87",
+      "description": "Author frames: politeness urgency",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "politeness_12",
+      "style": "politeness",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 5,
+      "agent_id": "agent-a1f455b33f4deba87",
+      "description": "Author frames: politeness urgency",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "urgency_10",
+      "style": "urgency",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 5,
+      "agent_id": "agent-a1f455b33f4deba87",
+      "description": "Author frames: politeness urgency",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "urgency_11",
+      "style": "urgency",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 5,
+      "agent_id": "agent-a1f455b33f4deba87",
+      "description": "Author frames: politeness urgency",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "urgency_13",
+      "style": "urgency",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 5,
+      "agent_id": "agent-a1f455b33f4deba87",
+      "description": "Author frames: politeness urgency",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "insistent_v3",
+      "style": "insistent",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "authority_v3",
+      "style": "authority",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "fake_delimiter_v1",
+      "style": "fake_delimiter",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "politeness_v1",
+      "style": "politeness",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "urgency_v1",
+      "style": "urgency",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "metadata_spoof_v1",
+      "style": "metadata_spoof",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "reasoning_bait_v1",
+      "style": "reasoning_bait",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "nested_quote_v1",
+      "style": "nested_quote",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "insistent_10",
+      "style": "insistent",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 2,
+      "agent_id": "agent-a19997b20bcada262",
+      "description": "Author frames: insistent authority",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "authority_11",
+      "style": "authority",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 2,
+      "agent_id": "agent-a19997b20bcada262",
+      "description": "Author frames: insistent authority",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "authority_13",
+      "style": "authority",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 2,
+      "agent_id": "agent-a19997b20bcada262",
+      "description": "Author frames: insistent authority",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "persona_swap_10",
+      "style": "persona_swap",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 4,
+      "agent_id": "agent-a7138e020e72916d5",
+      "description": "Author frames: persona task_complete",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "persona_swap_12",
+      "style": "persona_swap",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 4,
+      "agent_id": "agent-a7138e020e72916d5",
+      "description": "Author frames: persona task_complete",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "persona_swap_13",
+      "style": "persona_swap",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 4,
+      "agent_id": "agent-a7138e020e72916d5",
+      "description": "Author frames: persona task_complete",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "task_complete_11",
+      "style": "task_complete",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 4,
+      "agent_id": "agent-a7138e020e72916d5",
+      "description": "Author frames: persona task_complete",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "task_complete_13",
+      "style": "task_complete",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 4,
+      "agent_id": "agent-a7138e020e72916d5",
+      "description": "Author frames: persona task_complete",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "politeness_11",
+      "style": "politeness",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 5,
+      "agent_id": "agent-a1f455b33f4deba87",
+      "description": "Author frames: politeness urgency",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "politeness_13",
+      "style": "politeness",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 5,
+      "agent_id": "agent-a1f455b33f4deba87",
+      "description": "Author frames: politeness urgency",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "urgency_12",
+      "style": "urgency",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 5,
+      "agent_id": "agent-a1f455b33f4deba87",
+      "description": "Author frames: politeness urgency",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "persona_swap_v1",
+      "style": "persona_swap",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "byte-identical"
+    },
+    {
+      "id": "task_complete_v1",
+      "style": "task_complete",
+      "reference_only": false,
+      "source": "opus subagent",
+      "authoring_call": 1,
+      "agent_id": "agent-a4a251a711bbebf8e",
+      "description": "Author prototype attack frames",
+      "final_vs_authored": "REWORDED by orchestrator before merge (main-session line 1109); see README"
+    }
+  ]
+}

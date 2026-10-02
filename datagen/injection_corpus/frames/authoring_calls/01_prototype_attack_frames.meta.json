@@ -1,0 +1,29 @@
+{
+  "call": 1,
+  "description": "Author prototype attack frames",
+  "agent_id": "agent-a4a251a711bbebf8e",
+  "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+  "spawned_by_model": null,
+  "subagent_model_requested": "opus",
+  "subagent_models_observed": [
+    "claude-opus-5"
+  ],
+  "agent_type": "general-purpose",
+  "started_utc": "2026-08-11T04:39:36.889Z",
+  "finished_utc": "2026-08-11T04:40:55.655Z",
+  "transcript": "/Users/joshuapenman/.claude/projects/-Users-joshuapenman-sandbox-inference-goggles/ee22aab6-3eed-426a-870a-0026c5bd22b6/subagents/agent-a4a251a711bbebf8e.jsonl",
+  "prompt_sha256": "2ff25e0603b8edbaacc4ef4e0646f18f7c08a53b8b8274791c68df33c26f260e",
+  "n_frames_returned": 10,
+  "frame_ids_returned": [
+    "insistent_v3",
+    "authority_v3",
+    "fake_delimiter_v1",
+    "persona_swap_v1",
+    "task_complete_v1",
+    "politeness_v1",
+    "urgency_v1",
+    "metadata_spoof_v1",
+    "reasoning_bait_v1",
+    "nested_quote_v1"
+  ]
+}

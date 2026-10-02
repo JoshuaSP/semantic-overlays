@@ -30,6 +30,8 @@ infra/goggles_plugin/   vLLM plugin: applies overlays at marked prefill position
 evals/            frozen-model baseline harnesses (SEP, TensorTrust, PIArena)
 scripts/          tokenizing, judging, scoring (run locally)
 scripts/corpus/   how the released corpus was built -- not needed to reproduce
+datagen/injection_corpus/   provenance of the model-authored text in the corpus:
+                  frame-authoring prompts and outputs, frame-to-call mapping
 web/              the interactive demo (Next.js; see web/README.md)
 ```
 

@@ -1,0 +1,27 @@
+{
+  "call": 5,
+  "description": "Author frames: politeness urgency",
+  "agent_id": "agent-a1f455b33f4deba87",
+  "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+  "spawned_by_model": null,
+  "subagent_model_requested": "opus",
+  "subagent_models_observed": [
+    "claude-opus-5"
+  ],
+  "agent_type": "general-purpose",
+  "started_utc": "2026-08-11T04:50:21.560Z",
+  "finished_utc": "2026-08-11T04:50:34.854Z",
+  "transcript": "/Users/joshuapenman/.claude/projects/-Users-joshuapenman-sandbox-inference-goggles/ee22aab6-3eed-426a-870a-0026c5bd22b6/subagents/agent-a1f455b33f4deba87.jsonl",
+  "prompt_sha256": "3f82c4ac6671019bb0633e736d20369ecf2a28cdeea5f9c74a53c97bd37732f2",
+  "n_frames_returned": 8,
+  "frame_ids_returned": [
+    "politeness_10",
+    "politeness_11",
+    "politeness_12",
+    "politeness_13",
+    "urgency_10",
+    "urgency_11",
+    "urgency_12",
+    "urgency_13"
+  ]
+}

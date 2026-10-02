@@ -1,0 +1,49 @@
+{
+  "judge_sep": {
+    "HEAD_model_line": [
+      "MODEL = os.environ.get(\"JUDGE_MODEL\", \"anthropic/claude-haiku-4.5\")"
+    ],
+    "model_line_at_74e6101_2026-08-24": [
+      "MODEL = os.environ.get(\"JUDGE_MODEL\", \"openai/gpt-4.1-nano\")"
+    ],
+    "extracted_prompt_constants": [
+      "SYS@L66-66",
+      "USER@L68-97"
+    ]
+  },
+  "judge_piarena": {
+    "HEAD_model_line": [
+      "MODEL = os.environ.get(\"JUDGE_MODEL\", \"anthropic/claude-haiku-4.5\")"
+    ],
+    "model_line_at_74e6101_2026-08-24": [
+      "MODEL = os.environ.get(\"JUDGE_MODEL\", \"openai/gpt-4.1-nano\")"
+    ],
+    "extracted_prompt_constants": [
+      "SYS@L68-68",
+      "STEP1@L71-94",
+      "STEP2@L97-128"
+    ]
+  },
+  "judge_quadrat": {
+    "HEAD_model_line": [
+      "MODEL = os.environ.get(\"JUDGE_MODEL\", \"anthropic/claude-haiku-4.5\")"
+    ],
+    "model_line_at_74e6101_2026-08-24": null,
+    "extracted_prompt_constants": [
+      "SYS@L58-58",
+      "STEP1@L60-70",
+      "STEP2_OBEY@L72-86",
+      "STEP2_CONTAM@L88-110"
+    ]
+  },
+  "judge_quadrat_taxonomy": {
+    "HEAD_model_line": [
+      "MODEL = os.environ.get(\"JUDGE_MODEL\", \"anthropic/claude-haiku-4.5\")"
+    ],
+    "model_line_at_74e6101_2026-08-24": null,
+    "extracted_prompt_constants": [
+      "SYS@L34-34",
+      "ASK@L35-52"
+    ]
+  }
+}

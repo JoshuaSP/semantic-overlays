@@ -1,0 +1,27 @@
+{
+  "call": 2,
+  "description": "Author frames: insistent authority",
+  "agent_id": "agent-a19997b20bcada262",
+  "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+  "spawned_by_model": null,
+  "subagent_model_requested": "opus",
+  "subagent_models_observed": [
+    "claude-opus-5"
+  ],
+  "agent_type": "general-purpose",
+  "started_utc": "2026-08-11T04:49:46.254Z",
+  "finished_utc": "2026-08-11T04:50:50.512Z",
+  "transcript": "/Users/joshuapenman/.claude/projects/-Users-joshuapenman-sandbox-inference-goggles/ee22aab6-3eed-426a-870a-0026c5bd22b6/subagents/agent-a19997b20bcada262.jsonl",
+  "prompt_sha256": "336aa9556b4c699b03967ec730bbde92c579407795c97a9e5997e2067599fabe",
+  "n_frames_returned": 8,
+  "frame_ids_returned": [
+    "insistent_10",
+    "insistent_11",
+    "insistent_12",
+    "insistent_13",
+    "authority_10",
+    "authority_11",
+    "authority_12",
+    "authority_13"
+  ]
+}

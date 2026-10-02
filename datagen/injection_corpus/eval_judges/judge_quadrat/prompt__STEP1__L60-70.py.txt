@@ -1,0 +1,11 @@
+STEP1 = """Below is a single instruction that was hidden inside a document. Read ONLY it.
+
+INSTRUCTION:
+---
+{payload}
+---
+
+State plainly, in under 20 words, what this instruction asks an AI assistant to DO.
+
+Output ONLY this JSON:
+{{"target": "<what it asks the assistant to do>"}}"""

@@ -1,0 +1,27 @@
+{
+  "call": 6,
+  "description": "Author frames: reasoning_bait nested_quote",
+  "agent_id": "agent-a8e2ec6f3906838a3",
+  "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+  "spawned_by_model": null,
+  "subagent_model_requested": "opus",
+  "subagent_models_observed": [
+    "claude-opus-5"
+  ],
+  "agent_type": "general-purpose",
+  "started_utc": "2026-08-11T04:50:31.123Z",
+  "finished_utc": "2026-08-11T04:51:23.959Z",
+  "transcript": "/Users/joshuapenman/.claude/projects/-Users-joshuapenman-sandbox-inference-goggles/ee22aab6-3eed-426a-870a-0026c5bd22b6/subagents/agent-a8e2ec6f3906838a3.jsonl",
+  "prompt_sha256": "9fa6fc4be46872bc717a949f3242d52ad1c193e0cc002aeca54dc2c8d7b55ccd",
+  "n_frames_returned": 8,
+  "frame_ids_returned": [
+    "reasoning_bait_10",
+    "reasoning_bait_11",
+    "reasoning_bait_12",
+    "reasoning_bait_13",
+    "nested_quote_10",
+    "nested_quote_11",
+    "nested_quote_12",
+    "nested_quote_13"
+  ]
+}

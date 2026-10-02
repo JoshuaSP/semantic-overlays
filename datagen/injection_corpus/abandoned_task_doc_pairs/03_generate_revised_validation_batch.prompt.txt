@@ -1,0 +1,7 @@
+Read the file /Users/joshuapenman/sandbox/inference_goggles/data/injectgen/metaprompt.md and follow its instructions exactly. Note especially the FRAMING MIX and witness requirements — these were revised based on measured data and are strict.
+
+Substitute N = 10 and use this diversity seed:
+
+SEED: community garden allotments; a laptop battery warranty claim; regional railway signalling history; open-source library changelog; competitive bread baking; coastal erosion survey; a used-car listing; museum acquisition notes; youth soccer league scheduling; hotel guest review
+
+Write the resulting JSON array (and nothing else) to /Users/joshuapenman/sandbox/inference_goggles/data/injectgen/batch_v2.json using the Write tool. Then reply with just DONE and a one-line count of how many items you assigned to each framing category.

@@ -1,0 +1,11 @@
+{
+  "file": "scripts/compose_injection_items.py",
+  "symbol": "DIRECTIVES",
+  "lines": [
+    134,
+    147
+  ],
+  "n_entries": 12,
+  "identical_to_original_write_2026-08-11T01:32Z": true,
+  "authored_by": "claude-fable-5 (main session ee22aab6, line 802), inline in code; no prompt, no per-item model call"
+}

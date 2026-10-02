@@ -1,0 +1,114 @@
+{
+  "scripts/gen_gate_items.py": {
+    "sha256": "6360e7dee1b1027020b467a478800ad87c19548855362e5c05906d61b3ea7463",
+    "inline_pools": {
+      "TOKENS": [
+        70,
+        76
+      ],
+      "WORDS": [
+        77,
+        79
+      ],
+      "KEYWORDS": [
+        80,
+        81
+      ],
+      "PROTOCOLS": [
+        84,
+        98
+      ],
+      "SENTENCE_PROTOCOLS": [
+        101,
+        110
+      ],
+      "BENIGN_MISSES": [
+        112,
+        117
+      ],
+      "NOISE": [
+        118,
+        124
+      ],
+      "RIDERS": [
+        126,
+        133
+      ],
+      "KINDS": [
+        140,
+        141
+      ],
+      "ATTACK_PAYLOADS": [
+        146,
+        155
+      ]
+    },
+    "authored": "claude-opus-5, session ee22aab6 line 3717, 2026-08-12T20:31Z"
+  },
+  "scripts/gen_validator_items.py": {
+    "sha256": "c92ff0b3df8bede0c2b3c572c53fbc424ddd25d6bc31ee0f3fc1e21a7d3f48ac",
+    "inline_pools": {
+      "FILLER": [
+        74,
+        85
+      ],
+      "NAMES": [
+        86,
+        86
+      ],
+      "DOMAINS": [
+        87,
+        87
+      ],
+      "HOSTS": [
+        88,
+        89
+      ],
+      "EXFILTRATE": [
+        119,
+        125
+      ],
+      "FAKE_SYSTEM": [
+        126,
+        131
+      ],
+      "TASKS": [
+        150,
+        167
+      ],
+      "TASK_W": [
+        170,
+        171
+      ]
+    },
+    "authored": "claude-opus-5, session ee22aab6 line 3845, 2026-08-12T21:34Z"
+  },
+  "scripts/gen_fidelity_items.py": {
+    "sha256": "befeeaf60a1897fa3e517f450ae19f12be80c1f86eafbcc57bf8e78a51da68cf",
+    "inline_pools": {
+      "EVAL_INSTRUCTION": [
+        61,
+        62
+      ],
+      "INSTRUCTIONS": [
+        64,
+        73
+      ]
+    },
+    "authored": "claude-opus-5, session ee22aab6 line 5841, 2026-08-13T07:30Z"
+  },
+  "scripts/compose_short_span_items.py": {
+    "sha256": "552df79c5ad7c83dad3fe6ff61f103bdba5f20c352927dd18b7ec279f8ef4407",
+    "inline_pools": {
+      "QUESTION_TASKS": [
+        65,
+        70
+      ],
+      "FIDELITY_INSTRUCTION": [
+        73,
+        74
+      ]
+    },
+    "authored": "claude-opus-5, session d28ac381 line 10136, 2026-08-27T17:56Z (Bash heredoc)"
+  }
+}

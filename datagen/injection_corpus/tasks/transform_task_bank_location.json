@@ -1,0 +1,10 @@
+{
+  "file": "scripts/compose_injection_items.py",
+  "symbol": "TRANSFORM_TASKS",
+  "lines": [
+    110,
+    131
+  ],
+  "n_entries": 20,
+  "authored_by": "claude-opus-5 (main session ee22aab6): first bank at line 1168 (2026-08-11T05:07Z), pruned to selective-only at line 1276 (2026-08-11T05:21Z) after Joshua approved at line 1267"
+}

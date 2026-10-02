@@ -1,0 +1,7 @@
+Read the file /Users/joshuapenman/sandbox/inference_goggles/data/injectgen/metaprompt.md and follow its instructions exactly.
+
+Substitute N = 3 and use this diversity seed:
+
+SEED: municipal transit planning; amateur beekeeping; a returns/refund customer support ticket; historical shipwreck salvage; enterprise software release notes
+
+Write the resulting JSON array (and nothing else) to the file /Users/joshuapenman/sandbox/inference_goggles/data/injectgen/batch_prototype.json using the Write tool. Then reply with just the word DONE and a one-line note of anything you found ambiguous in the spec.

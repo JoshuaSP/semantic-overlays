@@ -1,0 +1,11 @@
+{
+  "description": "Generate injection training items",
+  "agent_id": "agent-afed81ffc8e333d5a",
+  "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+  "subagent_models_observed": [
+    "claude-opus-5"
+  ],
+  "started_utc": "2026-08-04T05:16:25.607Z",
+  "finished_utc": "2026-08-04T05:18:03.129Z",
+  "transcript": "/Users/joshuapenman/.claude/projects/-Users-joshuapenman-sandbox-inference-goggles/ee22aab6-3eed-426a-870a-0026c5bd22b6/subagents/agent-afed81ffc8e333d5a.jsonl"
+}

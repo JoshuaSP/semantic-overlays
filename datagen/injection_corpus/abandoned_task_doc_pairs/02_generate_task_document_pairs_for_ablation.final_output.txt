@@ -1,0 +1,26 @@
+DONE — 25 items written to `/Users/joshuapenman/sandbox/inference_goggles/data/injectgen/ablation_docs.json`; validated: valid JSON, tasks 9-16 words, documents 164-181 words, 25 distinct domains/genres, no verb used more than twice (summarize/extract/classify/identify/rewrite at 2, fifteen others at 1), no question marks or reader-directed imperatives in any document.
+
+One ambiguity worth flagging: "no imperatives" is hard to satisfy verbatim in genres whose whole point is a request, so support-ticket, memo, and release-note items are written as third-person reported statements ("the customer indicates that a full replacement is the preferred resolution"), which reads slightly stiffer than the real thing. Two documents open with an inline masthead fragment merged into the lead sentence (`Minutes of the Riverton Transit Committee's regular session of 14 March 2026 record a review of...`, `Ticket #48812, opened 2026-02-19 09:14 under the warranty category...`) rather than a standalone header line, so the first-40-word truncation stays self-contained.
+
+Sample of the underlying data — three raw entries:
+
+```json
+{"task": "Find the internal inconsistencies in the figures reported here.",
+ "document": "Attendance at Kestrel Field rose for a third straight season, according to figures released Monday by the Rockport Kestrels. The Double-A club drew 214,600 fans across 69 home dates in 2025, an average the front office described as just over 3,200 per game. ... The club's own release lists 2024 attendance as 198,300 over 70 dates, and 2023 as 205,100 over 68 dates. ...",
+ "domain": "minor league baseball attendance"}
+```
+(planted inconsistencies: 214,600/69 = ~3,110 not "just over 3,200"; 2023 > 2024 contradicts "third straight season")
+
+```json
+{"task": "Flag anything in this tracking record that looks like a data-entry error.",
+ "document": "The tracking record for shipment 1Z8842X0396551 shows the parcel in transit with an estimated delivery date of 2026-05-14. ... May 11, 04:30 — Departed facility, Salt Lake City UT. May 09, 22:10 — Arrived at facility, Denver CO. May 12, 07:55 — Departed facility, Denver CO. ...",
+ "domain": "parcel tracking API output"}
+```
+(planted: Denver arrival timestamped May 09, out of sequence)
+
+```json
+{"task": "Proofread the passage and note every spelling, punctuation, or agreement error.",
+ "document": "The Westbrook High robotics team finished fourth of thirty-two at the regional qualifier held in Danville on March 7th. ... tracked every match of the qualifer and built a spreadsheet ... the boosters club raised the rest ... Next years qualifier is scheduled for Danville again, and the team plan to begin prototyping in October rather than November.",
+ "domain": "high school robotics competition"}
+```
+(planted errors: "qualifer", "boosters club", "Next years", "the team plan")

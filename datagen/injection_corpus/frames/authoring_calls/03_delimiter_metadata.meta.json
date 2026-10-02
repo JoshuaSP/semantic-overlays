@@ -1,0 +1,27 @@
+{
+  "call": 3,
+  "description": "Author frames: delimiter metadata",
+  "agent_id": "agent-a3e62773d7771bef0",
+  "session": "ee22aab6-3eed-426a-870a-0026c5bd22b6",
+  "spawned_by_model": null,
+  "subagent_model_requested": "opus",
+  "subagent_models_observed": [
+    "claude-opus-5"
+  ],
+  "agent_type": "general-purpose",
+  "started_utc": "2026-08-11T04:49:57.917Z",
+  "finished_utc": "2026-08-11T04:51:19.819Z",
+  "transcript": "/Users/joshuapenman/.claude/projects/-Users-joshuapenman-sandbox-inference-goggles/ee22aab6-3eed-426a-870a-0026c5bd22b6/subagents/agent-a3e62773d7771bef0.jsonl",
+  "prompt_sha256": "dbdc7a525438966813d76398f04e841e183522d0e4b668dee941e2ad394fe3c6",
+  "n_frames_returned": 8,
+  "frame_ids_returned": [
+    "fake_delimiter_10",
+    "fake_delimiter_11",
+    "fake_delimiter_12",
+    "fake_delimiter_13",
+    "metadata_spoof_10",
+    "metadata_spoof_11",
+    "metadata_spoof_12",
+    "metadata_spoof_13"
+  ]
+}
